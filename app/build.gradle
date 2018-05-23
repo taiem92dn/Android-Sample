@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -22,12 +25,27 @@ android {
     }
 }
 
+ext {
+    // Android Support AppCompat
+    supportLibVersion = '27.1.1'
+    // Dependence Injection
+    daggerLibVersion = '2.12'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
+    implementation "com.android.support:design:${supportLibVersion}"
+    implementation "com.android.support:support-v4:${supportLibVersion}"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Dependence Injection
+    implementation "com.google.dagger:dagger:${daggerLibVersion}"
+    kapt "com.google.dagger:dagger-compiler:${daggerLibVersion}"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 }
