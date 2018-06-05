@@ -15,7 +15,7 @@ class  AppModule {
     val mApplication: Application
 
     constructor(application: Application) {
-        mApplication = application;
+        mApplication = application
     }
 
     @Provides
